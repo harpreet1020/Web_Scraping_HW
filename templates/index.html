@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data!</a></p>
+    </div>
+
+    <!-- Mars News -->
+    <div class="row">
+        <div class="col-md-4" style="background: rgba(243, 241, 241, 0.6);">
+        <br>
+            {% if mars['news_title'] %}
+                <h2>Latest Mars News</h2>
+                <h3>{{ mars['news_title'] }}</h3>
+                <p>{{ mars['news_paragraph'] }}</p>
+            {% else %}
+                <h3> Click button to get latest data</h3>
+            {% endif %}
+        </div>
+        <div class='col-md-4' style="background: rgba(243, 241, 241, 0.6);">
+            <div class="data-box">
+                <h3>Current Weather on Mars</h3>
+                <hr>
+                <p>{{ mars['mars_weather'] }}</p>
+            </div>
+        </div>
+        <div class="data-box col-md-4 pull-right" style="background: rgba(243, 241, 241, 0.6);">
+            <h3>Mars Facts</h3>
+            <hr>
+            {{ mars['mars_table'] | safe }}
+        </div>
+    </div>
+    <hr>
+    <div class='row'>
+        <div class='col-md-12' style="background: rgba(243, 241, 241, 0.6);">
+            <h3>Featured Image</h3>
+            <hr>
+            <figure>
+                <img src={{ mars['featured_image_url'] }} alt="Featured image for NASA mars page">
+            </figure>
+        </div>
+    </div>
+    <div class="data-box col-md-4 pull-left">
+
+            <h3>Sources</h3>
+            <hr>
+            <p> <a target="_blank" href="https://mars.nasa.gov/news/"> NASA Mars News Site </a> </p>
+            <p> <a target="_blank" href="https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars"> JPL Mars Space Images </a> </p>
+            <p> <a target="_blank" href="https://twitter.com/marswxreport?lang=en"> Mars Weather Twitter </a> </p>
+            <p> <a target="_blank" href="http://space-facts.com/mars/"> Mars Facts </a> </p>
+    </div>
+    </div>
+    </div>
+
+
+  </div>
+</body>
+</html>
